@@ -1,0 +1,8 @@
+﻿@using GrpcGreeterClient
+@{
+    ViewData["Title"] = "Grpc Hello";
+    HelloReply helloReply = (HelloReply) ViewData["helloReply"];
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>The response from the server is => @helloReply.Message</p>
