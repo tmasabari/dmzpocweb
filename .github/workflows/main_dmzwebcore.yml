@@ -23,16 +23,16 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build GrpcGreeter --configuration Release
+        run: dotnet build MvcMovie --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish GrpcGreeter -c Release -o ${{env.DOTNET_ROOT}}/GrpcGreeter
+        run: dotnet publish MvcMovie -c Release -o ${{env.DOTNET_ROOT}}/MvcMovie
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/GrpcGreeter
+          path: ${{env.DOTNET_ROOT}}/MvcMovie
 
   deploy:
     runs-on: ubuntu-latest
