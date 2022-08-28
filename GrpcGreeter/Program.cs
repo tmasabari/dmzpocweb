@@ -2,6 +2,10 @@ using GrpcGreeter.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/gRPC/use_gRPC_with_dotnet.md
+//https://docs.microsoft.com/en-us/aspnet/core/tutorials/grpc/grpc-start?view=aspnetcore-6.0&tabs=visual-studio-code
+//https://docs.microsoft.com/en-us/aspnet/core/grpc/aspnetcore?view=aspnetcore-6.0&tabs=visual-studio-code
+//https://docs.microsoft.com/en-us/aspnet/core/grpc/troubleshoot?view=aspnetcore-6.0
 //In order to prepare our gRPC server application to deploy to App Service, 
 //we will need to configure Kestrel to listen to an additional port that only listens for plain-text HTTP/2.
 // Configure Kestrel to listen on a specific HTTP port 
