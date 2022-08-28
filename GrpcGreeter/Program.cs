@@ -2,6 +2,20 @@ using GrpcGreeter.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//In order to prepare our gRPC server application to deploy to App Service, 
+//we will need to configure Kestrel to listen to an additional port that only listens for plain-text HTTP/2.
+// Configure Kestrel to listen on a specific HTTP port 
+// In this example we're listening to port 8081, but you can use another number.
+builder.WebHost.ConfigureKestrel(options => 
+{ 
+    // Comment out 8080 for local development, uncomment when publishing to App Service
+    options.ListenAnyIP(8080); 
+    options.ListenAnyIP(8081, listenOptions => 
+    { 
+        listenOptions.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http2; 
+    }); 
+});
+
 // Additional configuration is required to successfully run gRPC on macOS.
 // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
